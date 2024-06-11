@@ -1,0 +1,45 @@
+# TCP/IP Stack Optimization
+net.tcp.buffersize.default = 1048576,2097152,4194304,524288,1048576,2097152
+net.tcp.buffersize.wifi = 1048576,2097152,4194304,524288,1048576,2097152
+net.tcp.buffersize.4g = 1048576,2097152,4194304,524288,1048576,2097152
+net.tcp.buffersize.lte = 1048576,2097152,4194304,524288,1048576,2097152
+net.tcp.buffersize.5g = 1048576,2097152,4194304,524288,1048576,2097152
+
+net.ipv4.tcp_rmem = 1048576 2097152 4194304
+net.ipv4.tcp_wmem = 1048576 2097152 4194304
+
+net.ipv4.tcp_congestion_control=bbr
+net.ipv4.tcp_low_latency=1
+net.ipv4.tcp_timestamps=0
+net.ipv4.tcp_sack=1
+net.ipv4.tcp_window_scaling=1
+net.ipv4.tcp_moderate_rcvbuf=1
+net.ipv4.tcp_no_metrics_save=1
+
+# DNS Optimization
+net.dns1=1.1.1.1
+net.dns2=1.0.0.1
+net.rmnet0.dns1=1.1.1.1
+net.rmnet0.dns2=1.0.0.1
+net.gprs.dns1=1.1.1.1
+net.gprs.dns2=1.0.0.1
+
+# Network Prioritization
+net.core.rmem_max=16777216
+net.core.wmem_max=16777216
+net.ipv4.tcp_max_syn_backlog=2048
+net.core.netdev_max_backlog=32768
+
+# Misc Tweaks
+ro.ril.disable.power.collapse=0
+persist.cust.tel.cont=true
+persist.cust.tel.eons=true
+persist.sys.cust.tel.mode=1
+persist.vendor.radio.data_con_rprt=1
+persist.vendor.radio.add_power_save=0
+persist.vendor.radio.apm_sim_not_pwdn=1
+persist.vendor.radio.sib16_support=1
+persist.vendor.radio.custom_ecc=1
+persist.vendor.radio.rat_on=combine
+persist.radio.multisim.config=dsds
+persist.vendor.data.mode=concurrent
