@@ -1,1 +1,0 @@
-2.0 --- fully upgraded build,more complex scripts used, improved internet management and more internet speed in all activity.
