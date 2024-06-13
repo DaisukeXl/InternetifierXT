@@ -1,0 +1,39 @@
+# TCP Buffer Sizes (Optimized for various network conditions)
+setprop net.tcp.buffersize.default 4096,87380,262144,4096,16384,262144 
+setprop net.tcp.buffersize.wifi 524288,1048576,2097152,262144,524288,1048576
+setprop net.tcp.buffersize.4g 4096,87380,262144,4096,16384,262144
+setprop net.tcp.buffersize.lte 4096,87380,524288,4096,16384,524288
+setprop net.tcp.buffersize.5g 524288,1048576,2097152,262144,524288,1048576
+
+# TCP Congestion Control Algorithm (BBRv2 for newer kernels, BBR for older ones)
+if grep -q "bbr2" /proc/sys/net/ipv4/tcp_available_congestion_control; then
+  setprop net.ipv4.tcp_congestion_control bbr2
+else
+  setprop net.ipv4.tcp_congestion_control bbr
+fi
+
+# Network Stack Tweaks
+setprop net.ipv4.tcp_low_latency 1
+setprop net.ipv4.tcp_timestamps 0
+setprop net.ipv4.tcp_sack 1
+setprop net.ipv4.tcp_window_scaling 1
+
+# DNS Optimization (Cloudflare DNS)
+setprop net.dns1 1.1.1.1
+setprop net.dns2 1.0.0.1
+setprop net.rmnet0.dns1 1.1.1.1
+setprop net.rmnet0.dns2 1.0.0.1
+setprop net.gprs.dns1 1.1.1.1
+setprop net.gprs.dns2 1.0.0.1
+
+# Network Prioritization
+setprop net.core.rmem_max 16777216
+setprop net.core.wmem_max 16777216
+
+# Mobile Data Tweaks
+settings put global preferred_network_mode 26 # NR/LTE/GSM/WCDMA
+settings put global mobile_data_always_on 1
+
+# Wi-Fi Tweaks
+svc wifi aggressive_mode 1
+settings put global wifi_sleep_policy 2
